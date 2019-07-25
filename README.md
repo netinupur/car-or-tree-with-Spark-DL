@@ -13,11 +13,11 @@
 
 ## Methods 
 
-How you cleaned, prepared the dataset with samples of intermediate data
+`How you cleaned, prepared the dataset with samples of intermediate data
 Tools you used for analyzing the dataset and the justification (tools, models, etc.)
 How did you model the dataset, what techniques did you use and why?
 Did you have a hypothesis that you were trying to prove?
-Did you just visualize the dataset, and if so, why?
+Did you just visualize the dataset, and if so, why?`
 
 ### Data Sourcing and Ingesting
 
