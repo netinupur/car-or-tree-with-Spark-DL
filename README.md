@@ -115,5 +115,5 @@ Our ML pipeline in Spark consists of three stages: stringIndexer, DeepFeaturizer
 `How did you validate your results?`
 
 
-## Future Work
+## Future work
 `what would you do differently and what follow-up work would you do?`
