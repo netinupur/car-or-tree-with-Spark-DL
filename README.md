@@ -21,6 +21,40 @@ Did you just visualize the dataset, and if so, why?`
 
 ### Data Sourcing and Ingesting
 
+All our data was sourced from the [Open Images Dataset] (https://storage.googleapis.com/openimages/web/download.html) s3 and Google Cloud Storage buckets 
+We had two types of data:
+o	Label information csv files 
+o	Image jpg files 
+Label information 
+The label csv was stored in a Google Cloud storage bucket [insert link : https://storage.googleapis.com/openimages/v5/validation-annotations-human-imagelabels-boxable.csv] and was read in using `pandas read.csv` and then saved as a Spark DataFrame which had 256707 rows and the following schema: 
+
+[insert image]
+Each image could have multiple labels since a single picture could have multiple objects in it. The labels are alphanumeric codes, which were later joined with the interpretable label names to look like this:
+[Insert image]
+The source `verification` implies that the labels were manually verified. 
+A confidence of 1 is a positive label and a confidence of 0 is a negative label which tells us that that we can be reasonably sure that the label is NOT in the picture.
+
+For the scope of this project, we decided to keep data with positive labels corresponding to `car` and `tree` 
+
+
+Image files
+	
+The images were read in from an s3 bucket [insert link : s3://open-images-dataset/validation] using `sparkdl`’s `imageIO` function and saved as a Spark Dataframe with 41620 rows and the following schema:
+[insert image]
+
+o	`origin` : This was a string containing the s3 link to the image 
+o	`height` and `width`: This gave us the dimensions of the image in pixels
+o	`nChannels` : This gives us the number of color channels, which was 3 for all the pictures 
+o	`mode` : This was `RGB` for our images since they had 3 channels
+o	`data` : This contained all of the pixel information in the image as a binary variable
+
+In order to join the data with the label csv, we needed an image ID variable, which was created by extracting only the id from the `origin` string of each image.
+
+The data was joined together to look like this :
+[Insert image]
+
+
+
 ### Explanatory Data Analysis
 
 ### Modelling
