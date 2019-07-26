@@ -28,7 +28,7 @@ Did you just visualize the dataset, and if so, why?`
 | Code Files |
 |---|
 | [0. Data Sourcing and Ingesting] |
-| [1. Explanatory Data Analysis] |
+| [1. Explanatory Data Analysis](explanatory-data-analysis.ipynb)|
 | [2. Modelling] |
 
 
