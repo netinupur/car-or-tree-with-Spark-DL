@@ -140,10 +140,11 @@ Since our problem was that of binary classification, we measured our model on th
 
 We can see that all of these values are around the same, This gives us a sense that our model is not performing differently while predicting between cars and trees, which is good.
 
-Considering the fact that the original Kaggle problem was a classification problem with 600 classes, our accuracy on a relatively smaller binary classification problem could be better. However, an accuracy of 0.9265 can be considered an understimated value since our accuracy takes a hit for every picture that has both car and trees in it. We will discuss some ideas to improve our model in the Future Work section. 
+Considering the fact that the original Kaggle problem was a classification problem with 600 classes, our accuracy on a relatively smaller binary classification problem could be better. However, an accuracy of 0.9265 can be considered an understimated value since our accuracy takes a hit for every picture that has both car and trees in it.
 
-![Images that we classified wrong](https://github.com/gwu-bigdata/2019-big-data-project-sparkles/blob/master/wrong_classification_1.png)
-![](https://github.com/gwu-bigdata/2019-big-data-project-sparkles/blob/master/wrong_classification_2.png)
+![Images that we classified wrong](https://github.com/gwu-bigdata/2019-big-data-project-sparkles/blob/master/wrong_classification_1.png) ![](https://github.com/gwu-bigdata/2019-big-data-project-sparkles/blob/master/wrong_classification_2.png)
+
+We will discuss some ideas to improve our model in the Future Work section. 
 
 ## Challenges 
 
