@@ -25,9 +25,9 @@ Through this project we were able to:
 
 ## Introduction 
 
-In previous projects, we have encountered problems where the computer memory did not have enough capacity to execute the models or took excessively long amount of time. Especially with projects on image classification, where larger dataset and expensive computation is required, the issue was worse. 
+In previous projects, we have encountered problems where the computer memory did not have enough capacity to execute the models or took excessively long to do so. For image classification projects, where larger datasets and expensive computations are required, this issue is especially common. 
 
-In regards, we chose `image classification` as the topic for the final project to explore how we could apply what we learned in this class to overcome such limitations. 
+In regards, we chose `image classification` as the topic for this final project to explore how we could apply what we learned in this class to overcome such limitations. 
 
 ### Dataset
 We used dataset from [Open Images 2019 - Object Detection](https://www.kaggle.com/c/open-images-2019-object-detection) competition from Kaggle. The dataset provides large amount of image files which are each annotated with labels, indicating certain object classes are present within the image. Due to restraints on the budget and time, we decided to use the validation dataset for the project, which had 193,300 image-level labels and 12GB in total size. 
