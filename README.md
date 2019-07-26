@@ -1,8 +1,7 @@
+# Image Classification with Spark Machine Learning
+
 ### 2019-big-data-project-sparkles
 2019-big-data-project-sparkles created by GitHub Classroom
-
-
-# Google Object Detection with Spark Machine Learning
 ### Yoo Na Cha, Nupur Neti, Michael Schweizer
 
 ## Executive Summary
