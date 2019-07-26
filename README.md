@@ -1,33 +1,47 @@
-# 2019-big-data-project-sparkles
 2019-big-data-project-sparkles created by GitHub Classroom
+# Image Classification with Spark Machine Learning
+2019-big-data-project-sparkles
 
+Yoo Na Cha, Nupur Neti, Michael Schweizer
 
-# Google Object Detection with Spark Machine Learning
-### Yoo Na Cha, Nupur Neti, Michael Schweizer
 
 ## Executive Summary
 
-Through the project we were able to:
+Through this project we were able to:
 
-	1. Expand experience on reading in image datasets into the distributed system
-	2. Learn how to configure cluster configurations to add any necessary libraries
-	3. Overcome the limitations on processing large dataset using Spark and compare the advantages/disadvantages with modelling without distributed system
-	4. Become familiar with deep learning process using `mllib`
+1. Gain exposure to reading in image datasets into a distributed file system
+2. Learn how to configure Spark clusters to add any necessary libraries
+3. Practice processing very large unstructured datasets using Spark
+4. Become familiar with conducting machine learning in Spark using `mllib` and `sparkdl`
+
+
+| Navigation |
+|---|
+| [Introduction](README.md#Introduction) |
+| [Analytical Methods](README.md#Analytical-Methods)|
+| [Results & Conclusions](README.md#Results-and-Conclusions) | 
+| [Future Work](README.md#Future-Work)
+
 
 ## Introduction 
 
-In previous projects, we have encountered problems where the computer memory did not have enough capacity to execute the models or took excessively long amount of time. Especially with projects on image classification, where larger dataset and expensive computation is required, the issue was worse. 
+In previous projects, we have encountered problems where the computer memory did not have enough capacity to execute the models or took excessively long to do so. For image classification projects, where larger datasets and expensive computations are required, this issue is especially common. 
 
-In regards, we chose `image classification` as the topic for the final project and see how we could apply what we learned in this class to overcome such limitations. 
+In regards, we chose `image classification` as the topic for this final project to explore how we could apply what we learned in this class to overcome such limitations. 
 
-#### Dataset
-We used dataset from 'Open Images 2019 - Object Detection' competition from Kaggle(https://www.kaggle.com/c/open-images-2019-object-detection). The dataset provides large amount of image files which are each annotated with labels, indicating certain object classes are present within the image. Due to restraints on the budget and time, we decided to use the validation dataset for the project, which had 193,300 image-level labels and 12GB in total size. 
+### Dataset
+We used dataset from [Open Images 2019 - Object Detection](https://www.kaggle.com/c/open-images-2019-object-detection) competition from Kaggle. The dataset provides large amount of image files which are each annotated with labels, indicating certain object classes are present within the image. Due to restraints on the budget and time, we decided to use the validation dataset for the project, which had 193,300 image-level labels and 12GB in total size. 
 
-## Methods 
+## Analytical Methods 
 
 ### Tools
 For this project, we have used Spark on AWS EMR. We have conducted all project steps in Spark, including data sourcing and ingesting, exploratory data analysis, modeling, and evaluation of results. 
 
+#### Software
+Because we are all Python programmers, we used the Python API for Spark called PySpark to conduct our project. In PySpark, we used the structured APIs Dataframes and SQL. In terms of packages, we used the `mllib` package and the `sparkdl` package. [Sparkdl](https://github.com/databricks/spark-deep-learning) is a package for Deep Learning in Spark and allowed us to make use of Transfer Learning when creating our classification model. In order to run `sparkdl`, we also had to install Tensorflow and Keras on all the machines in our cluster. Because of the complicated setup with sparkdl, Tensorflow, and Keras, we made use of a special bootstrap script when launching our cluster. You can find the bootstrap script here: s3://bigdatateaching/bootstrap/bigdata-deeplearning-bootstrap.sh
+
+#### Cluster hardware
+When conducting our projects, we had to go through several iterations to figure out the best hardware setup. We started out with 6 m4.xlarge instances (1 master and 5 workers) with 16GB of memory each. This setup worked fine when we tested our code on a small subset of our data. However, when we ran it on the entire dataset, we ran into memory errors. The cluster did not have enough memory to train our deep learning model. To combat this, we increased the instance types to m4.2xlarge instances with 32GB of memory. However, we ran into memory issues again. As a next step, we increased the instances to m4.16xlarge with 256GB of memory. But we ran into memory issues again. Therefore, we decided to use the largest instances available on AWS: r5.24xlarge. This instance type has 768GB of memory and costs $6 per hour. We ran a cluster of 1 master and 3 workers and finally managed to train and evaluate our model. 
 
 ### Data Sourcing and Ingesting
 
@@ -71,16 +85,16 @@ The data was joined together to look like this :
 
 ### Explanatory Data Analysis
 
-### Modelling
+### Modeling
 #### Transfer learning approach
 For our actual ML model, we used the transfer learning approach. Transfer learning means that you take a pre-trained model and re-train it so that it fits your dataset.
 ![](https://github.com/gwu-bigdata/2019-big-data-project-sparkles/blob/master/transferlearning.png)
-The pre-trained model that we used is called InceptionV3. InceptionV3 is an incredibly deep convolutional neural network with dozens of layers. The layers consist of convolution and pooling functions that extract features from image data. On top of these layers of convolutions and pooling functions, there is a fully connected neural network that does the actual classification. 
+The pre-trained model that we used is called InceptionV3. InceptionV3 is an incredibly deep convolutional neural network with dozens of layers. The layers consist of convolution and pooling functions that extract features from image data. On top of these layers of convolutions and pooling functions, there is a fully connected neural network that does the actual classification. Here is an illustration of InceptionV3's network architecture:
 ![](https://github.com/gwu-bigdata/2019-big-data-project-sparkles/blob/master/inceptionV3.png)
-InceptionV3 was trained on ImageNet data, which consists of thousands of pictures covering hundreds of object classes. Transfer learning allows us to leverage this incredible model without having to train it ourselves. However, in order to create a model that can classify images in as cars or trees, we need to add our own classifier on top of the dozens of layers of convolution and pooling functions that perform feature extraction. For our classifier, we trained a penalized logistic regression.
+InceptionV3 was trained on ImageNet data, which consists of thousands of pictures covering hundreds of object classes. Transfer learning allows us to leverage this incredible model without having to train it ourselves. However, in order to create a model that can classify images as cars or trees, we need to add our own classifier on top of the dozens of layers of convolution and pooling functions that perform feature extraction. For our classifier, we trained a penalized logistic regression.
 
 #### ML pipeline
-Our ML pipeline in Spark consists of three stages: stringIndexer, DeepFeaturizer, and LogisticRegression. stringIndexer converts our labels from strings to numerics. This is necessary because ML pipelines in Spark only allow numeric. DeepFeaturizer is a function from the sparkdl package. It allows to implement transfer learning in Spark. DeepFeaturizer removes the last three layers (the classification layers) of the pre-trained InceptionV3 model. This allows us to train our own classifier that is suited for our task instead. As the classifier, we used LogisticRegression. We added regularization to the LogisticRegression to avoid overfitting.
+Our ML pipeline in Spark consists of three stages: stringIndexer, DeepFeaturizer, and LogisticRegression. stringIndexer converts our labels from strings to numerics. This is necessary because ML pipelines in Spark only allow numeric. DeepFeaturizer is a function from the sparkdl package. It allows to implement transfer learning in Spark. DeepFeaturizer removes the last three layers (the classification layers) of the pre-trained InceptionV3 model. This allows us to train our own classifier that is suited for our task instead. As the classifier, we used LogisticRegression. We added regularization to the LogisticRegression to avoid overfitting. Here is an illustration of our final pipeline:
 ![](https://github.com/gwu-bigdata/2019-big-data-project-sparkles/blob/master/mllibpipeline.png)
 
 
@@ -92,7 +106,7 @@ Our ML pipeline in Spark consists of three stages: stringIndexer, DeepFeaturizer
 | [2. Modelling] |
 
 
-## Results/Conclusion
+## Results and Conclusions
 `What did you find and learn?`
 `How did you validate your results?`
 
