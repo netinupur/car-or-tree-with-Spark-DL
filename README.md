@@ -1,4 +1,4 @@
-# 2019-big-data-project-sparkles
+### 2019-big-data-project-sparkles
 2019-big-data-project-sparkles created by GitHub Classroom
 
 
@@ -21,7 +21,7 @@ In previous projects, we have encountered problems where the computer memory did
 In regards, we chose `image classification` as the topic for the final project and see how we could apply what we learned in this class to overcome such limitations. 
 
 #### Dataset
-We used dataset from 'Open Images 2019 - Object Detection' competition from Kaggle(https://www.kaggle.com/c/open-images-2019-object-detection). The dataset provides large amount of image files which are each annotated with labels, indicating certain object classes are present within the image. Due to restraints on the budget and time, we decided to use the validation dataset for the project, which had 193,300 image-level labels and 12GB in total size. 
+We used dataset from [Open Images 2019 - Object Detection](https://www.kaggle.com/c/open-images-2019-object-detection) competition from Kaggle. The dataset provides large amount of image files which are each annotated with labels, indicating certain object classes are present within the image. Due to restraints on the budget and time, we decided to use the validation dataset for the project, which had 193,300 image-level labels and 12GB in total size. 
 
 ## Methods 
 
