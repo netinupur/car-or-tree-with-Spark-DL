@@ -7,20 +7,25 @@
 
 ## Executive Summary
 
+Through the project we were able to:
+
+	1. Expand experience on reading in image datasets into the distributed system
+	2. Learn how to configure cluster configurations to add any necessary libraries
+	3. Overcome the limitations on processing large dataset using Spark and compare the advantages/disadvantages with modelling without distributed system
+	4. Become familiar with deep learning process using `mllib`
 
 ## Introduction 
 
+In previous projects, we have encountered problems where the computer memory did not have enough capacity to execute the models or took excessively long amount of time. Especially with projects on image classification, where larger dataset and expensive computation is required, the issue was worse. 
+
+In regards, we chose `image classification` as the topic for the final project and see how we could apply what we learned in this class to overcome such limitations. 
+
+#### Dataset
+We used dataset from 'Open Images 2019 - Object Detection' competition from Kaggle(https://www.kaggle.com/c/open-images-2019-object-detection). The dataset provides large amount of image files which are each annotated with labels, indicating certain object classes are present within the image. Due to restraints on the budget and time, we decided to use the validation dataset for the project, which had 193,300 image-level labels and 12GB in total size. 
 
 ## Methods 
 
-`How you cleaned, prepared the dataset with samples of intermediate data
-Tools you used for analyzing the dataset and the justification (tools, models, etc.)
-How did you model the dataset, what techniques did you use and why?
-Did you have a hypothesis that you were trying to prove?
-Did you just visualize the dataset, and if so, why?`
-
-
-## Tools
+### Tools
 For this project, we have used Spark on AWS EMR. We have conducted all project steps in Spark, including data sourcing and ingesting, exploratory data analysis, modeling, and evaluation of results. 
 
 
