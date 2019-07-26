@@ -5,8 +5,6 @@
 Yoo Na Cha, Nupur Neti, Michael Schweizer
 
 
-[Modeling](README.md#modeling)
-
 ## Executive Summary
 
 Through the project we were able to:
