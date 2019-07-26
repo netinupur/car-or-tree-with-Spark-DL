@@ -23,6 +23,11 @@ Through this project we were able to:
 | [Future Work](README.md#Future-Work)
 
 
+| Code Files |
+|---|
+| [Image Classification Notebook]('Image classification notebook.ipynb')|
+
+
 ## Introduction 
 
 In previous projects, we have encountered problems where the computer memory did not have enough capacity to execute the models or took excessively long to do so. For image classification projects, where larger datasets and expensive computations are required, this issue is especially common. 
@@ -120,13 +125,6 @@ InceptionV3 was trained on ImageNet data, which consists of thousands of picture
 Our ML pipeline in Spark consists of three stages: stringIndexer, DeepFeaturizer, and LogisticRegression. stringIndexer converts our labels from strings to numerics. This is necessary because ML pipelines in Spark only allow numeric. DeepFeaturizer is a function from the sparkdl package. It allows to implement transfer learning in Spark. DeepFeaturizer removes the last three layers (the classification layers) of the pre-trained InceptionV3 model. This allows us to train our own classifier that is suited for our task instead. As the classifier, we used LogisticRegression. We added regularization to the LogisticRegression to avoid overfitting. Here is an illustration of our final pipeline:
 ![](https://github.com/gwu-bigdata/2019-big-data-project-sparkles/blob/master/data/mllibpipeline.png)
 
-
-
-| Code Files |
-|---|
-| [0. Data Sourcing and Ingesting] |
-| [1. Explanatory Data Analysis](explanatory-data-analysis.ipynb)|
-| [2. Modelling] |
 
 
 ## Results and Conclusions
