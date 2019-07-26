@@ -3,7 +3,7 @@
 2019-big-data-project-sparkles
 
 Yoo Na Cha, Nupur Neti, Michael Schweizer
-
+[Modeling](README.md#modeling)
 
 ## Executive Summary
 
@@ -78,7 +78,7 @@ The data was joined together to look like this :
 
 ### Explanatory Data Analysis
 
-### Modelling
+### Modeling
 #### Transfer learning approach
 For our actual ML model, we used the transfer learning approach. Transfer learning means that you take a pre-trained model and re-train it so that it fits your dataset.
 ![](https://github.com/gwu-bigdata/2019-big-data-project-sparkles/blob/master/transferlearning.png)
