@@ -21,12 +21,13 @@ Did you just visualize the dataset, and if so, why?`
 
 ### Data Sourcing and Ingesting
 
-All our data was sourced from the [Open Images Dataset] (https://storage.googleapis.com/openimages/web/download.html) s3 and Google Cloud Storage buckets 
+All our data was sourced from the [Open Images Dataset](https://storage.googleapis.com/openimages/web/download.html) s3 and Google Cloud Storage buckets 
 We had two types of data:
-o	Label information csv files 
-o	Image jpg files 
-Label information 
-The label csv was stored in a Google Cloud storage bucket [insert link : https://storage.googleapis.com/openimages/v5/validation-annotations-human-imagelabels-boxable.csv] and was read in using `pandas read.csv` and then saved as a Spark DataFrame which had 256707 rows and the following schema: 
+* Label information csv files 
+* Image jpg files 
+
+#### Label information 
+The label csv was stored in a [Google Cloud storage bucket](https://storage.googleapis.com/openimages/v5/validation-annotations-human-imagelabels-boxable.csv) and was read in using `pandas read.csv` and then saved as a Spark DataFrame which had 256707 rows and the following schema: 
 
 [insert image]
 Each image could have multiple labels since a single picture could have multiple objects in it. The labels are alphanumeric codes, which were later joined with the interpretable label names to look like this:
@@ -36,10 +37,9 @@ A confidence of 1 is a positive label and a confidence of 0 is a negative label 
 
 For the scope of this project, we decided to keep data with positive labels corresponding to `car` and `tree` 
 
-
-Image files
+#### Image files
 	
-The images were read in from an s3 bucket [insert link : s3://open-images-dataset/validation] using `sparkdl`’s `imageIO` function and saved as a Spark Dataframe with 41620 rows and the following schema:
+The images were read in from an [s3 bucket](s3://open-images-dataset/validation) using `sparkdl`’s `imageIO` function and saved as a Spark Dataframe with 41620 rows and the following schema:
 [insert image]
 
 o	`origin` : This was a string containing the s3 link to the image 
