@@ -21,7 +21,8 @@ Did you just visualize the dataset, and if so, why?`
 
 ### Data Sourcing and Ingesting
 
-All our data was sourced from the [Open Images Dataset](https://storage.googleapis.com/openimages/web/download.html) s3 and Google Cloud Storage buckets 
+All our data was sourced from the [Open Images Dataset](https://storage.googleapis.com/openimages/web/download.html) s3 and Google Cloud Storage buckets.
+
 We had two types of data:
 * Label information csv files 
 * Image jpg files 
