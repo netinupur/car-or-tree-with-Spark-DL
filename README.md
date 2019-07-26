@@ -19,6 +19,11 @@ How did you model the dataset, what techniques did you use and why?
 Did you have a hypothesis that you were trying to prove?
 Did you just visualize the dataset, and if so, why?`
 
+
+## Tools
+For this project, we have used Spark on AWS EMR. We have conducted all project steps in Spark, including data sourcing and ingesting, exploratory data analysis, modeling, and evaluation of results. 
+
+
 ### Data Sourcing and Ingesting
 
 All our data was sourced from the [Open Images Dataset](https://storage.googleapis.com/openimages/web/download.html) s3 and Google Cloud Storage buckets.
