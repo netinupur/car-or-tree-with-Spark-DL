@@ -9,10 +9,10 @@ Yoo Na Cha, Nupur Neti, Michael Schweizer
 
 Through the project we were able to:
 
-1. Expand experience on reading in image datasets into the distributed system
-2. Learn how to configure cluster configurations to add any necessary libraries
-3. Overcome the limitations on processing large dataset using Spark and compare the advantages/disadvantages with modeling without distributed system
-4. Become familiar with deep learning process using `mllib`
+1. Gain exposure to reading in image datasets into a distributed file system
+2. Learn how to configure Spark clusters to add any necessary libraries
+3. Process a very large unstructured dataset using Spark
+4. Become familiar with conducting machine learning on Spark using `mllib` and `sparkdl`
 
 
 | Navigation |
