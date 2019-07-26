@@ -28,10 +28,13 @@ We had two types of data:
 
 #### Label information 
 The label csv was stored in a [Google Cloud storage bucket](https://storage.googleapis.com/openimages/v5/validation-annotations-human-imagelabels-boxable.csv) and was read in using `pandas read.csv` and then saved as a Spark DataFrame which had 256707 rows and the following schema: 
-![](https://github.com/gwu-bigdata/2019-big-data-project-sparkles/blob/master/label_data.png)
+
+![](https://github.com/gwu-bigdata/2019-big-data-project-sparkles/blob/master/label_schema.png)
 
 Each image could have multiple labels since a single picture could have multiple objects in it. The labels are alphanumeric codes, which were later joined with the interpretable label names to look like this:
+
 ![](https://github.com/gwu-bigdata/2019-big-data-project-sparkles/blob/master/label_joined.png)
+
 The source `verification` implies that the labels were manually verified. 
 A confidence of 1 is a positive label and a confidence of 0 is a negative label which tells us that that we can be reasonably sure that the label is NOT in the picture.
 
