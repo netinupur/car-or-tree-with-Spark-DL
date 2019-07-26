@@ -47,18 +47,17 @@ The images were read in from an [s3 bucket](s3://open-images-dataset/validation)
 
 ![](https://github.com/gwu-bigdata/2019-big-data-project-sparkles/blob/master/image_schema.png)
 
-o	`origin` : This was a string containing the s3 link to the image 
-o	`height` and `width`: This gave us the dimensions of the image in pixels
-o	`nChannels` : This gives us the number of color channels, which was 3 for all the pictures 
-o	`mode` : This was `RGB` for our images since they had 3 channels
-o	`data` : This contained all of the pixel information in the image as a binary variable
+* `origin` : This was a string containing the s3 link t!o the image 
+* `height` and `width`: This gave us the dimensions of the image in pixels
+* `nChannels` : This gives us the number of color channels, which was 3 for all the pictures 
+* `mode` : This was `RGB` for our images since they had 3 channels
+* `data` : This contained all of the pixel information in the image as a binary variable
 
 In order to join the data with the label csv, we needed an image ID variable, which was created by extracting only the id from the `origin` string of each image.
 
 The data was joined together to look like this :
-[Insert image]
 
-
+![](https://github.com/gwu-bigdata/2019-big-data-project-sparkles/blob/master/image_joined.png)
 
 ### Explanatory Data Analysis
 
