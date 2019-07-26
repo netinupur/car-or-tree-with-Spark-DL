@@ -112,4 +112,9 @@ Our ML pipeline in Spark consists of three stages: stringIndexer, DeepFeaturizer
 
 
 ## Future Work
-`what would you do differently and what follow-up work would you do?`
+Based on the learnings from this project, here are some things that we would do differently and/or expand on:
+- Explore the use AWS SageMaker and/or Azure Machine Learning
+- Train and evaluate the model on instances with GPUs
+- Understand explain paths better to write more efficient code
+- Instead of using a logistic regression as the classifier, train a neural network
+- Conduct a grid Search to find the best hyperparameters for the classifier
