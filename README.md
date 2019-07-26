@@ -18,7 +18,7 @@ Through this project we were able to:
 | Navigation |
 |---|
 | [Introduction](README.md#Introduction) |
-| [Analytical Methods](README.md#Methods)|
+| [Analytical Methods](README.md#Analytical-Methods)|
 | [Results & Conclusions](README.md#Results-and-Conclusions) | 
 | [Future Work](README.md#Future-Work)
 
