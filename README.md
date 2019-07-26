@@ -19,8 +19,8 @@ Through this project we were able to:
 |---|
 | [Introduction](README.md#Introduction) |
 | [Analytical Methods](README.md#Methods)|
-| [Results & Conclusions](README.md#Results-&-Conclusions) | 
-| [Future Work](README.md#Future-work)
+| [Results & Conclusions](README.md#Results-and-Conclusions) | 
+| [Future Work](README.md#Future-Work)
 
 
 ## Introduction 
@@ -106,7 +106,7 @@ Our ML pipeline in Spark consists of three stages: stringIndexer, DeepFeaturizer
 | [2. Modelling] |
 
 
-## Results & Conclusions
+## Results and Conclusions
 `What did you find and learn?`
 `How did you validate your results?`
 
