@@ -1,6 +1,7 @@
 2019-big-data-project-sparkles created by GitHub Classroom
 # Image Classification with Spark Machine Learning
 2019-big-data-project-sparkles
+
 Yoo Na Cha, Nupur Neti, Michael Schweizer
 
 
