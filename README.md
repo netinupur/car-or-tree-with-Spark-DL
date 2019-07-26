@@ -25,7 +25,7 @@ Through this project we were able to:
 
 | Code Files |
 |---|
-| [Image Classification Notebook]('Image classification notebook.ipynb')|
+| [Image Classification Notebook](image-classification-notebook.ipynb)|
 
 
 ## Introduction 
