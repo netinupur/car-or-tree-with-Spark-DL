@@ -87,12 +87,11 @@ The data was joined together to look like this :
 
 We've initially used sparkdl's imageIO to load images from S3 bucket. From the data, we were able to check the dimension of each images, which are as follows: 
 
-
 ![](https://github.com/gwu-bigdata/2019-big-data-project-sparkles/blob/master/data/image-detection.PNG)
+
 However, because the original schema of the files made it hard for explanatory data analysis, just for this section, we've downloaded the validation dataset and read it into Spark. 
 
 Firstly from importing the image label dataset, we were able to see that 41620 images were matched with 256,707 labels. This indicates that each images had several object labels within. After leaving just the necessary columns, Image ID and LabelName, we joined the dataset with actual names of the labels for better interpretability. Through the `.count()` function, we were able to see that there were 601 unique label names in the dataset. 
-
 
 With the preprocessed dataset containing image ID and its matching label names, we went to do some explanatory data analysis to better understand the data. 
 
@@ -101,11 +100,13 @@ As mentioned above, we could see that multiple labels were included in one image
 ![](https://github.com/gwu-bigdata/2019-big-data-project-sparkles/blob/master/data/label-count.PNG)
 
 When comparing the labels with the actual label names, we were able to ses that some of the most frequent label names were `mammal`, `person`, `plant`, or `clothing`. 
+
 ![](https://github.com/gwu-bigdata/2019-big-data-project-sparkles/blob/master/data/label-frequency.PNG)
 
 More interestingly, we created a dendogram of the label names which shows which labels were likely to appear together within one image. With the top 48 images, the dendogram hierarchically clusters labels that has high correlation in occurances. We can see that human eye, nose or any other parts of the face were very highly correlated, as well as for car, wheel, tire and auto part, which makes sense. 
 
 ![](https://github.com/gwu-bigdata/2019-big-data-project-sparkles/blob/master/data/label-clustering.PNG)
+
 
 ### Modeling
 #### Transfer learning approach
