@@ -107,9 +107,27 @@ Our ML pipeline in Spark consists of three stages: stringIndexer, DeepFeaturizer
 
 
 ## Results and Conclusions
-`What did you find and learn?`
-`How did you validate your results?`
+
+Since our problem was that of binary classification, we measured our model on the following metrics:
+
+* Accuracy : 0.9265
+* F1 Score : 0.9266
+* Weighted Recall : 0.9265
+* Weighted Precision : 0.9267
+
+We can see that all of these values are around the same, This gives us a sense that our model is not performing differently while predicting between cars and trees, which is good.
+
+Considering the fact that the original Kaggle problem was a classification problem with 600 classes, our accuracy on a relatively smaller binary classification problem could be better. 
+
+An accuracy of 0.9265 can be considered a somewhat understimated value since our accuracy takes a hit for every picture that has both car and trees in it. 
+
+![Looking at the images we classified wrong ](s3://open-images-dataset/validation/08e34d5847106ac3.jpg)
 
 
 ## Future Work
-`what would you do differently and what follow-up work would you do?`
+Based on the learnings from this project, here are some things that we would do differently and/or expand on:
+- Explore the use AWS SageMaker and/or Azure Machine Learning
+- Train and evaluate the model on instances with GPUs
+- Understand explain paths better to write more efficient code
+- Instead of using a logistic regression as the classifier, train a neural network
+- Conduct a grid Search to find the best hyperparameters for the classifier
