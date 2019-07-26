@@ -22,7 +22,7 @@ Through the project we were able to:
 | [Introduction](README.md#Introduction) |
 | [Analytical methods](README.md#Methods)|
 | [Results & conclusions](README.md#Results) | 
-| [Future work](README.md#Future work)
+| [Future work](README.md#Future-work)
 
 
 ## Introduction 
