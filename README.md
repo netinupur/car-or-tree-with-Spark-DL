@@ -20,9 +20,9 @@ Through the project we were able to:
 | Navigation |
 |---|
 | [Introduction](README.md#Introduction) |
-| [Analytical methods](README.md#Methods)|
-| [Results & conclusions](README.md#Results) | 
-| [Future work](README.md#Future-work)
+| [Analytical Methods](README.md#Methods)|
+| [Results & Conclusions](README.md#Results) | 
+| [Future Work](README.md#Future-work)
 
 
 ## Introduction 
@@ -31,10 +31,10 @@ In previous projects, we have encountered problems where the computer memory did
 
 In regards, we chose `image classification` as the topic for the final project and see how we could apply what we learned in this class to overcome such limitations. 
 
-#### Dataset
+### Dataset
 We used dataset from [Open Images 2019 - Object Detection](https://www.kaggle.com/c/open-images-2019-object-detection) competition from Kaggle. The dataset provides large amount of image files which are each annotated with labels, indicating certain object classes are present within the image. Due to restraints on the budget and time, we decided to use the validation dataset for the project, which had 193,300 image-level labels and 12GB in total size. 
 
-## Methods 
+## Analytical Methods 
 
 ### Tools
 For this project, we have used Spark on AWS EMR. We have conducted all project steps in Spark, including data sourcing and ingesting, exploratory data analysis, modeling, and evaluation of results. 
@@ -44,8 +44,6 @@ Because we are all Python programmers, we used the Python API for Spark called P
 
 #### Cluster hardware
 When conducting our projects, we had to go through several iterations to figure out the best hardware setup. We started out with 6 m4.xlarge instances (1 master and 5 workers) with 16GB of memory each. This setup worked fine when we tested our code on a small subset of our data. However, when we ran it on the entire dataset, we ran into memory errors. The cluster did not have enough memory to train our deep learning model. To combat this, we increased the instance types to m4.2xlarge instances with 32GB of memory. However, we ran into memory issues again. As a next step, we increased the instances to m4.16xlarge with 256GB of memory. But we ran into memory issues again. Therefore, we decided to use the largest instances available on AWS: r5.24xlarge. This instance type has 768GB of memory and costs $6 per hour. We ran a cluster of 1 master and 3 workers and finally managed to train and evaluate our model. 
-
-
 
 ### Data Sourcing and Ingesting
 
@@ -110,10 +108,10 @@ Our ML pipeline in Spark consists of three stages: stringIndexer, DeepFeaturizer
 | [2. Modelling] |
 
 
-## Results/Conclusion
+## Results & Conclusions
 `What did you find and learn?`
 `How did you validate your results?`
 
 
-## Future work
+## Future Work
 `what would you do differently and what follow-up work would you do?`
