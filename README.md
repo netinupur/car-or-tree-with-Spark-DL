@@ -7,12 +7,12 @@ Yoo Na Cha, Nupur Neti, Michael Schweizer
 
 ## Executive Summary
 
-Through the project we were able to:
+Through this project we were able to:
 
 1. Gain exposure to reading in image datasets into a distributed file system
 2. Learn how to configure Spark clusters to add any necessary libraries
-3. Process a very large unstructured dataset using Spark
-4. Become familiar with conducting machine learning on Spark using `mllib` and `sparkdl`
+3. Practice processing very large unstructured datasets using Spark
+4. Become familiar with conducting machine learning in Spark using `mllib` and `sparkdl`
 
 
 | Navigation |
