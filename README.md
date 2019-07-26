@@ -54,11 +54,11 @@ We had two types of data:
 #### Label information 
 The label csv was stored in a [Google Cloud storage bucket](https://storage.googleapis.com/openimages/v5/validation-annotations-human-imagelabels-boxable.csv) and was read in using `pandas read.csv` and then saved as a Spark DataFrame which had 256707 rows and the following schema: 
 
-![](https://github.com/gwu-bigdata/2019-big-data-project-sparkles/blob/master/label_schema.png)
+![](https://github.com/gwu-bigdata/2019-big-data-project-sparkles/blob/master/data/label_schema.png)
 
 Each image could have multiple labels since a single picture could have multiple objects in it. The labels are alphanumeric codes, which were later joined with the interpretable label names to look like this:
 
-![](https://github.com/gwu-bigdata/2019-big-data-project-sparkles/blob/master/label_joined.png)
+![](https://github.com/gwu-bigdata/2019-big-data-project-sparkles/blob/master/data/label_joined.png)
 
 * `Source` value of  `verification` implies that the labels were manually verified. 
 * A `Confidence` of 1 is a positive label and a confidence of 0 is a negative label which tells us that that we can be reasonably sure that the label is NOT in the picture.
@@ -69,7 +69,7 @@ For the scope of this project, we decided to keep data with positive labels corr
 	
 The images were read in from an [s3 bucket](s3://open-images-dataset/validation) using `sparkdl`’s `imageIO` function and saved as a Spark Dataframe with 41620 rows and the following schema:
 
-![](https://github.com/gwu-bigdata/2019-big-data-project-sparkles/blob/master/image_schema.png)
+![](https://github.com/gwu-bigdata/2019-big-data-project-sparkles/blob/master/data/image_schema.png)
 
 * `origin` : This was a string containing the s3 link t!o the image 
 * `height` and `width`: This gave us the dimensions of the image in pixels
@@ -81,7 +81,7 @@ In order to join the data with the label csv, we needed an image ID variable, wh
 
 The data was joined together to look like this :
 
-![](https://github.com/gwu-bigdata/2019-big-data-project-sparkles/blob/master/image_joined.png)
+![](https://github.com/gwu-bigdata/2019-big-data-project-sparkles/blob/master/data/image_joined.png)
 
 ### Explanatory Data Analysis
 
@@ -111,14 +111,14 @@ More interestingly, we created a dendogram of the label names which shows which 
 ### Modeling
 #### Transfer learning approach
 For our actual ML model, we used the transfer learning approach. Transfer learning means that you take a pre-trained model and re-train it so that it fits your dataset.
-![](https://github.com/gwu-bigdata/2019-big-data-project-sparkles/blob/master/transferlearning.png)
+![](https://github.com/gwu-bigdata/2019-big-data-project-sparkles/blob/master/data/transferlearning.png)
 The pre-trained model that we used is called InceptionV3. InceptionV3 is an incredibly deep convolutional neural network with dozens of layers. The layers consist of convolution and pooling functions that extract features from image data. On top of these layers of convolutions and pooling functions, there is a fully connected neural network that does the actual classification. Here is an illustration of InceptionV3's network architecture:
-![](https://github.com/gwu-bigdata/2019-big-data-project-sparkles/blob/master/inceptionV3.png)
+![](https://github.com/gwu-bigdata/2019-big-data-project-sparkles/blob/master/data/inceptionV3.png)
 InceptionV3 was trained on ImageNet data, which consists of thousands of pictures covering hundreds of object classes. Transfer learning allows us to leverage this incredible model without having to train it ourselves. However, in order to create a model that can classify images as cars or trees, we need to add our own classifier on top of the dozens of layers of convolution and pooling functions that perform feature extraction. For our classifier, we trained a penalized logistic regression.
 
 #### ML pipeline
 Our ML pipeline in Spark consists of three stages: stringIndexer, DeepFeaturizer, and LogisticRegression. stringIndexer converts our labels from strings to numerics. This is necessary because ML pipelines in Spark only allow numeric. DeepFeaturizer is a function from the sparkdl package. It allows to implement transfer learning in Spark. DeepFeaturizer removes the last three layers (the classification layers) of the pre-trained InceptionV3 model. This allows us to train our own classifier that is suited for our task instead. As the classifier, we used LogisticRegression. We added regularization to the LogisticRegression to avoid overfitting. Here is an illustration of our final pipeline:
-![](https://github.com/gwu-bigdata/2019-big-data-project-sparkles/blob/master/mllibpipeline.png)
+![](https://github.com/gwu-bigdata/2019-big-data-project-sparkles/blob/master/data/mllibpipeline.png)
 
 
 
@@ -140,11 +140,10 @@ Since our problem was that of binary classification, we measured our model on th
 
 We can see that all of these values are around the same, This gives us a sense that our model is not performing differently while predicting between cars and trees, which is good.
 
-Considering the fact that the original Kaggle problem was a classification problem with 600 classes, our accuracy on a relatively smaller binary classification problem could be better. However, an accuracy of 0.9265 can be considered an understimated value since our accuracy takes a hit for every picture that has both car and trees in it.
+Considering the fact that the original Kaggle problem was a classification problem with 600 classes, our accuracy on a relatively smaller binary classification problem could be better. However, an accuracy of 0.9265 can be considered an understimated value since our accuracy takes a hit for every picture that has both car and trees in it. We will discuss some ideas to improve our model in the Future Work section. 
 
-![Images that we classified wrong](https://github.com/gwu-bigdata/2019-big-data-project-sparkles/blob/master/wrong_classification_1.png) ![](https://github.com/gwu-bigdata/2019-big-data-project-sparkles/blob/master/wrong_classification_2.png)
-
-We will discuss some ideas to improve our model in the Future Work section. 
+![Images that we classified wrong](https://github.com/gwu-bigdata/2019-big-data-project-sparkles/blob/master/data/wrong_classification_1.png)
+![](https://github.com/gwu-bigdata/2019-big-data-project-sparkles/blob/master/data/wrong_classification_2.png)
 
 ## Challenges 
 
