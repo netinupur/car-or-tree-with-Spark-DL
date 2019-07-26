@@ -36,8 +36,8 @@ Each image could have multiple labels since a single picture could have multiple
 
 ![](https://github.com/gwu-bigdata/2019-big-data-project-sparkles/blob/master/label_joined.png)
 
-The source `verification` implies that the labels were manually verified. 
-A confidence of 1 is a positive label and a confidence of 0 is a negative label which tells us that that we can be reasonably sure that the label is NOT in the picture.
+* `Source` value of  `verification` implies that the labels were manually verified. 
+* A `Confidence` of 1 is a positive label and a confidence of 0 is a negative label which tells us that that we can be reasonably sure that the label is NOT in the picture.
 
 For the scope of this project, we decided to keep data with positive labels corresponding to `car` and `tree` 
 
