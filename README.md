@@ -97,11 +97,11 @@ With the preprocessed dataset containing image ID and its matching label names, 
 
 As mentioned above, we could see that multiple labels were included in one image file, varying from 1 to 25 labels. The distribution of label counts in one image was right skewed with most of the images having around five labels. 
 
-![](https://github.com/gwu-bigdata/2019-big-data-project-sparkles/blob/master/data/label-count.PNG)
+![](https://github.com/gwu-bigdata/2019-big-data-project-sparkles/blob/master/data/label-count.png)
 
 When comparing the labels with the actual label names, we were able to ses that some of the most frequent label names were `mammal`, `person`, `plant`, or `clothing`. 
 
-![](https://github.com/gwu-bigdata/2019-big-data-project-sparkles/blob/master/data/label-frequency.PNG)
+![](https://github.com/gwu-bigdata/2019-big-data-project-sparkles/blob/master/data/label-frequency.png)
 
 More interestingly, we created a dendogram of the label names which shows which labels were likely to appear together within one image. With the top 48 images, the dendogram hierarchically clusters labels that has high correlation in occurances. We can see that human eye, nose or any other parts of the face were very highly correlated, as well as for car, wheel, tire and auto part, which makes sense. 
 
