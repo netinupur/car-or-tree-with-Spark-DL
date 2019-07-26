@@ -62,6 +62,18 @@ The data was joined together to look like this :
 ### Explanatory Data Analysis
 
 ### Modelling
+#### Transfer learning approach
+For our actual ML model, we used the transfer learning approach. Transfer learning means that you take a pre-trained model and re-train it so that it fits your dataset.
+[Insert picture of transfer learning from slides]
+The pre-trained model that we used is called InceptionV3. InceptionV3 is an incredibly deep convolutional neural network with dozens of layers. The layers consist of convolution and pooling functions that extract features from image data. On top of these layers of convolutions and pooling functions, there is a fully connected neural network that does the actual classification. 
+[Insert picture of InceptionV3 architecture]
+InceptionV3 was trained on ImageNet data, which consists of thousands of pictures covering hundreds of object classes. Transfer learning allows us to leverage this incredible model without having to train it ourselves. However, in order to create a model that can classify images in as cars or trees, we need to add our own classifier on top of the dozens of layers of convolution and pooling functions that perform feature extraction. For our classifier, we trained a penalized logistic regression.
+
+#### ML pipeline
+Our ML pipeline in Spark consists of three stages: stringIndexer, DeepFeaturizer, and LogisticRegression. stringIndexer converts our labels from strings to numerics. This is necessary because ML pipelines in Spark only allow numeric. DeepFeaturizer is a function from the sparkdl package. It allows to implement transfer learning in Spark. DeepFeaturizer removes the last three layers (the classification layers) of the pre-trained InceptionV3 model. This allows us to train our own classifier that is suited for our task instead. As the classifier, we used LogisticRegression. We added regularization to the LogisticRegression to avoid overfitting.
+[At some point, add image of the pipeline from the presentation]
+
+
 
 | Code Files |
 |---|
