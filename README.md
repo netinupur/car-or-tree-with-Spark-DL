@@ -19,7 +19,7 @@ Through this project we were able to:
 |---|
 | [Introduction](README.md#Introduction) |
 | [Analytical Methods](README.md#Methods)|
-| [Results & Conclusions](README.md#Results) | 
+| [Results & Conclusions](README.md#Results-&-Conclusions) | 
 | [Future Work](README.md#Future-work)
 
 
