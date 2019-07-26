@@ -121,8 +121,17 @@ Considering the fact that the original Kaggle problem was a classification probl
 
 An accuracy of 0.9265 can be considered a somewhat understimated value since our accuracy takes a hit for every picture that has both car and trees in it. 
 
-![](s3://open-images-dataset/validation/08e34d5847106ac3.jpg)
+![Images that we classified wrong] ((https://github.com/gwu-bigdata/2019-big-data-project-sparkles/blob/master/wrong_classification_1.png)
+![] ((https://github.com/gwu-bigdata/2019-big-data-project-sparkles/blob/master/wrong_classification_2.png)
 
+## Challenges 
+
+The few aspects of this project that we found challenging were : 
+* Setting up the libraries on the cluster
+* Understanding structure of image data
+* Exploratory analysis with images 
+* Running out of RAM for joining and training 
+* Unreliability of Spark Cluster
 
 ## Future Work
 Based on the learnings from this project, here are some things that we would do differently and/or expand on:
